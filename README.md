@@ -25,6 +25,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 ## Usage
 
 To use Authex simply plug the different implementations to your pipeline.
+Note: Remember to add the Auth0 keys in the configuration of your app.
 
 #### TokenAuth Plug
 
@@ -32,10 +33,10 @@ The TokenAuth Plug simply checks for a token in the connection and decodes it to
 
 Example:
 
-    ```elixir
-    plug MyApp.PlugOne
-    plug Authex.TokenAuth
-    ```
+  ```elixir
+   plug MyApp.PlugOne
+   plug Authex.TokenAuth
+  ```
 
 #### LoadCurrentResource Plug
 
@@ -55,12 +56,12 @@ This module plug takes some required parameters and some options.
 Examples:
 
   ```elixir
-   plug Authex.TokenAuth
+   plug Authex.TokenAuth \n
    plug Authex.LoadCurrentResource, model: MyApp.User, repo: MyApp.Repo
   ```
 
   ```elixir
-   plug Authex.TokenAuth
+   plug Authex.TokenAuth \n
    plug Authex.LoadCurrentResource, model: MyApp.User, repo: MyApp.Repo, field: :email
   ```
 
@@ -70,7 +71,7 @@ The Enforce Authentication plug requires an error handler module implementing an
 that takes a Plug connection. This module will be used by the EnforceAuthentication plug when it encounters
 an authentication error. This module plug is designed to be used in controllers.
 
-Examples:
+Example:
 
   ```elixir
    plug Authex.LoadCurrentResource, handler: __MODULE__
