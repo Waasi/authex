@@ -1,6 +1,5 @@
 defmodule Authex.TokenAuth do
   import Plug.Conn
-  import Authex
 
   def init(_), do: :ok
 
@@ -28,5 +27,10 @@ defmodule Authex.TokenAuth do
     else
       conn
     end
+  end
+
+  defp salt do
+    Application.get_env(:authex, :auth_secret)
+    |> Base.url_decode64
   end
 end
