@@ -23,3 +23,11 @@ defmodule Repo do
     %User{id: 1, email: "test@test.com"}
   end
 end
+
+defmodule AuthenticationError do
+  import Plug.Conn
+
+  def authentication_error(conn) do
+    assign(conn, :failed, true)
+  end
+end
